@@ -1,0 +1,7 @@
+[package]
+name = "alphaNES"
+version = "0.1.0"
+authors = ["DoubleGate <parobek@gmail.com>"]
+# edition = "2025"
+
+[dependencies]
