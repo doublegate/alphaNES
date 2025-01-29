@@ -1,7 +1,35 @@
 [package]
 name = "alphaNES"
 version = "0.1.0"
-authors = ["DoubleGate <parobek@gmail.com>"]
-# edition = "2025"
+edition = "2021"
+authors = ["Your DoubleGate <parobek@gmail.com>"]
+description = "Rust NES Emulator with Ricoh 2A03 CPU Core"
+license = "MIT"
+repository = "https://github.com/doublegate/alphaNES"
+
+# Separate CPU implementation into its own module
+[[bin]]
+name = "alphaNES"
+path = "src/main.rs"
+
+[features]
+default = ["logging"]
+logging = ["env_logger"]
+serde = ["dep:serde", "dep:serde_derive"]  # For save state serialization
 
 [dependencies]
+log = "0.4"                     # For diagnostic logging
+env_logger = { version = "0.11.6", optional = true } # Environment-aware logging
+bitflags = "2.4"                # For status flag management
+thiserror = "2.0.11"               # For error handling
+serde = { version = "1.0", features = ["derive"], optional = true }
+
+# Development dependencies
+[dev-dependencies]
+rstest = "0.24.0"                 # For test parameterization
+mockall = "0.13.1"                # For mocking the Bus trait
+criterion = "0.5"               # For benchmarking
+
+[[bench]]
+name = "cpu_benchmarks"
+harness = false
