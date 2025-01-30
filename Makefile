@@ -17,15 +17,15 @@ all: build
 
 # Build the project
 build:
-    $(RUSTC) build --release --target x86_64-pc-windows-gnu
-    cp $(BUILD_DIR)/x86_64-pc-windows-gnu/release/$(TARGET) .
+	$(RUSTC) build --release --target x86_64-pc-windows-gnu
+	cp $(BUILD_DIR)/x86_64-pc-windows-gnu/release/$(TARGET) .
 
 # Clean the build artifacts
 clean:
-    $(RUSTC) clean
+	$(RUSTC) clean
 
 # Run the project
 run: build
-    ./$(TARGET)
+	./$(TARGET)
 
 .PHONY: all build clean run
